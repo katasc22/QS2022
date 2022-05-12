@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'scala'
+}
+
+group 'ist'
+version '1.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.13.1'
+    testImplementation 'junit:junit:4.13'
+    testImplementation group: 'org.scalacheck', name: 'scalacheck_2.13', version: '1.14.3'
+    testImplementation 'org.scalatest:scalatest_2.13:3.1.1'
+    compile fileTree(dir: 'currentMutant', include: ['*.jar'])
+}
+
+task copyTests(type: Copy) {
+    from '../Musterlosung/src/test/scala/at/tugraz/ist/qs2022/MessageBoardSpecification.scala'
+    into './src/test/scala/at/tugraz/ist/qs2022/'
+}
+
+// build.dependsOn copyTests
+
+task testMBModel(type: Test) {
+    filter {
+        includeTestsMatching "at.tugraz.ist.qs2022.MessageBoardSpecificationTest.*"
+    }
+    description = "Runs model-based tests for the MessageBoard."
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.scalacheck.PropFromFun" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-05-12T09:36:13" hostname="LAPTOP-9TS8EO20" time="0.21">
+  <properties/>
+  <testcase name="SimpleFunctionsTest.insertionSort Java: ordered" classname="org.scalacheck.PropFromFun" time="0.091"/>
+  <testcase name="SimpleFunctionsTest.insertionSort: ordered" classname="org.scalacheck.PropFromFun" time="0.035"/>
+  <testcase name="SimpleFunctionsTest.insertionSort: permutation" classname="org.scalacheck.PropFromFun" time="0.038"/>
+  <testcase name="SimpleFunctionsTest.max: biggest element returned" classname="org.scalacheck.PropFromFun" time="0.021"/>
+  <testcase name="SimpleFunctionsTest.minIdx: minimal Index returned" classname="org.scalacheck.PropFromFun" time="0.023"/>
+  <system-out><![CDATA[+ OK, passed 100 tests.
++ OK, passed 100 tests.
++ OK, passed 100 tests.
++ OK, passed 100 tests.
++ OK, passed 100 tests.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

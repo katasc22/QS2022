@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.scalacheck.PropFromFun" tests="2" skipped="0" failures="1" errors="0" timestamp="2022-03-06T19:11:52" hostname="DESKTOP-LPH44QS" time="0.231">
+  <properties/>
+  <testcase name="MessageBoardProperties.message length: Publish + Ack [R1]" classname="org.scalacheck.PropFromFun" time="0.207"/>
+  <testcase name="MessageBoardProperties.example property with generators" classname="org.scalacheck.PropFromFun" time="0.024">
+    <failure message="java.lang.Throwable: ScalaCheck property did not hold true" type="java.lang.Throwable">java.lang.Throwable: ScalaCheck property did not hold true
+	at at.tugraz.ist.qs2021.ScalaCheckJUnitPropertiesRunner$CustomTestCallback.failure(ScalaCheckJUnitPropertiesRunner.scala:70)
+	at at.tugraz.ist.qs2021.ScalaCheckJUnitPropertiesRunner$CustomTestCallback.onTestResult(ScalaCheckJUnitPropertiesRunner.scala:78)
+	at org.scalacheck.Test$TestCallback$$anon$4.onTestResult(Test.scala:268)
+	at org.scalacheck.Test$.check(Test.scala:455)
+	at org.scalacheck.Test$.check(Test.scala:398)
+	at at.tugraz.ist.qs2021.ScalaCheckJUnitPropertiesRunner.$anonfun$run$1(ScalaCheckJUnitPropertiesRunner.scala:106)
+	at at.tugraz.ist.qs2021.ScalaCheckJUnitPropertiesRunner.$anonfun$run$1$adapted(ScalaCheckJUnitPropertiesRunner.scala:98)
+	at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:553)
+	at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:551)
+	at scala.collection.AbstractIterable.foreach(Iterable.scala:921)
+	at at.tugraz.ist.qs2021.ScalaCheckJUnitPropertiesRunner.run(ScalaCheckJUnitPropertiesRunner.scala:98)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:412)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+</failure>
+  </testcase>
+  <system-out><![CDATA[+ OK, passed 100 tests.
+> Collected test data: 
+64% invalid message length
+36% valid message length
+failing seed for MessageBoardProperties.example property with generators is qOktiHl-sN9hQ2djhg9F8y8cSVx8NoHoe5jrqPTSgUG=
+! Falsified after 0 passed tests.
+> ARG_0: ""
+> ARG_1: List("")
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

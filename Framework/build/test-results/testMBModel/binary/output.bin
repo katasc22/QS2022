@@ -1,0 +1,8 @@
+"! Falsified after 2 passed tests.
+> Labels of failing property: 
+;initialstate = ModelMessageBoard([], [], fail, not banned)
+Lseqcmds = (Publish(Alice, msg_w_11ch_) => Failure(java.lang.UnsupportedOper
+)  ationException: Not implemented yet.))
+L> ARG_0: Actions(ModelMessageBoard([], [], fail, not banned),List(Publish(A
+  lice, msg_w_11ch_)),List())
+Elapsed time: 0,222 sec 
