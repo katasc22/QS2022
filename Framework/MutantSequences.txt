@@ -1,6 +1,9 @@
 Mutant-No: Sequence to kill [e.g. Publish(Bob, msg_w_9ch), Report(Laura, Bob), Like(Bob, msg_w_9ch, Alice)] from ARG_0 or NO_MUTANT if correct
-1: NOT_DONE
-2: NOT_DONE
-3: NOT_DONE
-4: NOT_DONE
-5: NOT_DONE
+1: ARG_0: Actions(ModelMessageBoard([], [], fail, not banned),List(Publish(B
+     ob, msg_w_11ch_)),List())
+2: ARG_0: Actions(ModelMessageBoard([], [], fail, not banned),List(Publish(A
+     lice, msg_w_9ch), Dislike(Bob, msg_w_9ch, Alice)),List())
+3: ARG_0: Actions(ModelMessageBoard([], [], fail, not banned),List(Report(Ch
+     arles, Alice), Report(Simone, Alice), Publish(Alice, msg_w_10ch)),List())
+4: Mutant conforms to the model.
+5: Mutant conforms to the model.

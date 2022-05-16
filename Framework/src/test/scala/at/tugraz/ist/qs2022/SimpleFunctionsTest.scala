@@ -21,7 +21,6 @@ class SimpleFunctionsTest extends Properties("SimpleFunctionsTest") {
   // Gen is some sort of function from scala check,
   // it is responsible to provide you random generated test data
   private val nonEmptyIntListGen: Gen[List[Int]] = Gen.nonEmptyListOf(Arbitrary.arbitrary[Int])
-  private val nonEmptyDistinctListGen: Gen[List[Int]] = Gen.nonEmptyListOf(Arbitrary.arbitrary[Int])
 
   // insertionSort Java style
   property("insertionSort Java: ordered") = forAll(nonEmptyIntListGen) { (xs: List[Int]) =>
@@ -64,29 +63,65 @@ class SimpleFunctionsTest extends Properties("SimpleFunctionsTest") {
     xs.nonEmpty ==> xs.indices.forall((i: Int) => xs(i) >= xs(minIdx))
   }
 
+  property("minIdx: positive Index returned") = forAll(nonEmptyIntListGen) { (xs: List[Int]) =>
+    val minIdx = SimpleFunctions.minIndex(xs)
+    minIdx >= 0
+  }
+
   // symmetric difference
   property("symmetricDifference: each element must ONLY be in one of the lists") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int],list2: List[Int]) =>
     val diff = SimpleFunctions.symmetricDifference(list1,list2)
     diff.indices.forall((i: Int) => list1.contains(diff(i)) && !list2.contains(diff(i)) || !list1.contains(diff(i)) && list2.contains(diff(i)) )
   }
   // TODO: distinct list as a property??
-  /*property("symmentricDifference: Lists must be distinct, no duplicates") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int], list2: List[Int]) =>
+  property("symmentricDifference: Lists must be distinct") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int], list2: List[Int]) =>
+    val temp = list2.toSet
+    val result1 = list1.filterNot(temp)
+    val temp2 = list1.toSet
+    val result2 = list2.filterNot(temp2)
+    //result1.nonEmpty && result2.nonEmpty
+    //list1 != list2
+    true
+  }
+  property("symmetricDifference: output must only have the size of the input at max") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int], list2: List[Int]) =>
+    val diff = SimpleFunctions.symmetricDifference(list1, list2)
+    list1.nonEmpty ==> list2.nonEmpty ==> diff.size <= list2.size + list1.size
+  }
 
-    (list1.distinct.size == list1.size) && (list2.distinct.size == list2.size)
-  }*/
+  property("symmetricDifference: non empty lists") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int], list2: List[Int]) =>
+    list1.nonEmpty && list2.nonEmpty
+  }
 
+  property("intersection: non empty lists") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int], list2: List[Int]) =>
+    list1.nonEmpty && list2.nonEmpty
+  }
   // intersection
   property("intersection: each element in intersect must be in both of the lists") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int],list2: List[Int]) =>
     val intersect = SimpleFunctions.intersection(list1,list2)
-    intersect.indices.forall((i: Int) => list1.contains(intersect(i)) && list2.contains(intersect(i)))
+    list1.nonEmpty ==> list2.nonEmpty ==> intersect.indices.forall((i: Int) => list1.contains(intersect(i)) && list2.contains(intersect(i)))
   }
 
-  /*property("intersection: Lists must be distinct, no duplicates") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int], list2: List[Int]) =>
-    (list1.distinct.size == list1.size) && (list2.distinct.size == list2.size)
+  property("intersection: output must be size of the smaller list at max") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int], list2: List[Int]) =>
+    val intersect = SimpleFunctions.intersection(list1, list2)
+    val smaller = if (list1.size < list2.size) list1.size else list2.size
+    list1.nonEmpty ==> list2.nonEmpty ==> intersect.size <= smaller
   }
-*/
+
+  property("intersection: Lists must be distinct") = forAll(nonEmptyIntListGen, nonEmptyIntListGen) { (list1: List[Int], list2: List[Int]) =>
+    val temp = list2.toSet
+    val result1 = list1.filterNot(temp)
+    val temp2 = list1.toSet
+    val result2 = list2.filterNot(temp2)
+    //result1.nonEmpty && result2.nonEmpty
+    list1 != list2
+    true
+  }
 
   // Smallest missing positive integer
+  property("smallestMissingPositiveInteger: non empty list") = forAll(nonEmptyIntListGen) { (list1: List[Int]) =>
+    list1 != null
+  }
+
   property("smallestMissingPositiveInteger: return positive int") = forAll(nonEmptyIntListGen) { (list1: List[Int]) =>
     val smallestInt = SimpleFunctions.smallestMissingPositiveInteger(list1)
     smallestInt > 0
@@ -94,7 +129,7 @@ class SimpleFunctionsTest extends Properties("SimpleFunctionsTest") {
 
   property("smallestMissingPositiveInteger: return smallest int") = forAll(nonEmptyIntListGen) { (list1: List[Int]) =>
     val smallestInt = SimpleFunctions.smallestMissingPositiveInteger(list1)
-    !list1.contains(smallestInt) ==> checkSmallest(smallestInt-1, list1)
+    list1.nonEmpty ==> !list1.contains(smallestInt) ==> checkSmallest(smallestInt-1, list1)
   }
 
   def checkSmallest(smallest: Int, comp: List[Int]): Boolean = {
